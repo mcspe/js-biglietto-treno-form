@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticket Generator</title>
+
+  <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+
+  <!-- BOOTSTRAP -->
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css' integrity='sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==' crossorigin='anonymous'/>
+
+</head>
+<body>
+
+  <label for="name">Inserisci il tuo nome e cognome</label>
+  <input type="text" name="name" id="name">
+
+  <label for="name">Inserisci il numero di KM che intendi percorrere</label>
+  <input type="number" name="km" id="km">
+
+  <select name="age" id="age">
+    <option value="">Seleziona la tua fascia di età</option>
+    <option value="underAge">Minorenne (< 17)</option>
+    <option value="adult">Adulto (18 - 64)</option>
+    <option value="overAge">Pensionato (> 65)</option>
+  </select>
+
+  <button id="calc">Genera</button>
+  <button id="canc">Annulla</button>
+
+  <div id="result"></div>
+  <script src="./js/script.js"></script>
+</body>
+</html>
