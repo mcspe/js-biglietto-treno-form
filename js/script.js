@@ -46,20 +46,31 @@ function generate(){
 
   console.log(`prezzo biglietto: ${ticketPrice}`); // CONTROLLO CHE IL PREZZO VENGA CALCOLATO CORRETTAMENTE
 
-  result = `
-    il prezzo è ${ticketPrice}
-    nome utente: ${userName}
-    lunghezza viaggio: ${tripKM}
-    età passeggero: ${userAge}
-    prezzo intero: ${priceFull}
-    prezzo under 18: €${priceUnderAge}
-    prezzo over 65: €${priceOverAge}
-  `;
-  document.getElementById('result').innerHTML = result;
 
-  userName = document.getElementById('name').value = '';
-  tripKM = document.getElementById('km').value = '';
-  userAge = document.getElementById('age').value = '';
+  if ((userName != '') && (tripKM != '') && (userAge != '')){
+    
+    result = `
+      il prezzo è ${ticketPrice}
+      nome utente: ${userName}
+      lunghezza viaggio: ${tripKM}
+      età passeggero: ${userAge}
+      prezzo intero: ${priceFull}
+      prezzo under 18: €${priceUnderAge}
+      prezzo over 65: €${priceOverAge}
+    `;
+
+    userName = document.getElementById('name').value = '';
+    tripKM = document.getElementById('km').value = '';
+    userAge = document.getElementById('age').value = '';
+
+  } else{
+
+    result = `Per favore inserisci tutti i dati richiesti prima di procedere`;
+
+  }
+
+  
+  document.getElementById('result').innerHTML = result;
 
 }
 
