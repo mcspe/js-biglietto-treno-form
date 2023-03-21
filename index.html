@@ -11,26 +11,98 @@
   <!-- BOOTSTRAP -->
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css' integrity='sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==' crossorigin='anonymous'/>
 
+  <!-- CUSTOM CSS -->
+  <link rel="stylesheet" href="./css/style.css">
+
 </head>
+
 <body>
 
-  <label for="name">Inserisci il tuo nome e cognome</label>
-  <input type="text" name="name" id="name">
+  <div class="ms-wrapper overflow-auto">
 
-  <label for="name">Inserisci il numero di KM che intendi percorrere</label>
-  <input type="number" name="km" id="km">
+    <div class="container text-center my-5 p-5 bg-black bg-opacity-75 rounded-5 text-white">
 
-  <select name="age" id="age">
-    <option value="">Seleziona la tua fascia di età</option>
-    <option value="underAge">Minorenne (< 17)</option>
-    <option value="adult">Adulto (18 - 64)</option>
-    <option value="overAge">Pensionato (> 65)</option>
-  </select>
+      <h1 class="mb-3">CALCOLA IL PREZZO DEL TUO BIGLIETTO</h1>    
 
-  <button id="calc">Genera</button>
-  <button id="canc">Annulla</button>
+      <div class="row align-items-end">
 
-  <div id="result"></div>
+        <div class="col-lg-4">
+
+          <div class="ms-name d-flex flex-column mb-3">
+
+            <label for="name">Inserisci il tuo nome e cognome</label>
+  
+            <input type="text" name="name" id="name">
+  
+          </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+          <div class="ms-km d-flex flex-column mb-3">
+
+            <label for="name">Inserisci il numero di KM che intendi percorrere</label>
+  
+            <input type="number" name="km" id="km">
+  
+          </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+          <div class="ms-age d-flex flex-column mb-3">
+
+            <select name="age" id="age">
+  
+              <option value="">Seleziona la tua fascia di età</option>
+  
+              <option value="underAge">Minorenne (< 17)</option>
+  
+              <option value="adult">Adulto (18 - 64)</option>
+  
+              <option value="overAge">Pensionato (> 65)</option>
+  
+            </select>
+  
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="ms-btn">
+        <button id="calc" class="mx-3 my-1">Genera</button>
+        <button id="canc" class="mx-3 my-1">Annulla</button>
+      </div>
+
+      <div id="result"></div>
+  
+    </div>
+
+
+    <!-- <p class="fs-4 fst-italic">
+      Ciao <span class="fw-bold">${userName}</span> in base alla tua età (<span class="fw-bold">${userAge} anni</span>) e ai km da percorrere (<span class="fw-bold">${tripKM} km</span>) il prezzo del tuo biglietto sarà di:
+    </p>
+    
+    <p class="fs-3 fw-bold mb-5">€ ${ticketPrice}*</p>
+    
+    <div class="small fst-italic">
+    
+      <p>
+        *Il prezzo del biglietto viene calcolato arrotondando alla seconda cifra decimale.
+        <ul class="list-unstyled">
+          <li>Il prezzo unitario per km è di &euro; ${priceFull}</li>
+          <li>Il prezzo per i minori di 18 anni è di &euro; ${priceUnderAge}, calcolato applicando uno sconto del 20% sul prezzo unitario</li>
+          <li>Il prezzo per coloro che hanno più di 65 anni è di &euro; ${priceOverAge}, calcolato applicando uno sconto del 40% sul prezzo unitario</li>
+        </ul>        
+      </p> -->
+          
+    </div>
+  </div>
+
   <script src="./js/script.js"></script>
+
 </body>
 </html>

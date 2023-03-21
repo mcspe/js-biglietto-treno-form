@@ -1,0 +1,15 @@
+body{
+  background: url(../img/stazione.jpeg) center no-repeat;
+  background-size: cover;
+}
+
+.ms-wrapper{
+  height: 100vh;
+}
+
+.ms-btn button{
+  background-color: rgba(255, 255, 255, 0.849);
+  padding: 5px 15px;
+  border: none;
+  border-radius: 15px;
+}
