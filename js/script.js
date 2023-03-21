@@ -13,6 +13,16 @@ let result = '';
 const btnCalc = document.getElementById('calc');
 const btnCanc = document.getElementById('canc');
 
+// IMPLEMENTO FUNZIONE RANDOM CHE UTILIZZERO' PER GENERARE CODICI RANDOM NEL BIGLIETTO
+function random(min, max){
+  let randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
+  return randomNumber;
+}
+
+// let randomN = random(0, 1000);
+
+// console.log('numero random ', randomN);
+
 
 // IMPLEMENTO FUNZIONE GENERATE CHE MEMORIZZA LE INFO INSERITE DALL'UTENTE E CALCOLA IL PREZZO DEL BIGLIETTO
 function generate(){
