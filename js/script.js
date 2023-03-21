@@ -1,3 +1,4 @@
+// DICHIARAZIONE VARIABILI
 let userName = '';
 let tripKM = 0;
 let userAge = '';
@@ -12,10 +13,19 @@ let result = '';
 const btnCalc = document.getElementById('calc');
 const btnCanc = document.getElementById('canc');
 
+
+// IMPLEMENTO FUNZIONE GENERATE CHE MEMORIZZA LE INFO INSERITE DALL'UTENTE E CALCOLA IL PREZZO DEL BIGLIETTO
 function generate(){
-  userName = document.getElementById('name').value;
-  tripKM = document.getElementById('km').value;
-  userAge = document.getElementById('age').value;
+
+  if (document.getElementById('result').classList.contains('d-none')){
+    document.getElementById('result').classList.remove('d-none');
+  } // CONTROLLO CHE LA VISUALIZZAZIONE DEL RISULTATO NON SIA NASCOSTA
+
+  userName = document.getElementById('name').value; // OTTENGO IL NOME INSERITO DALL'UTENTE
+
+  tripKM = document.getElementById('km').value; // OTTENGO I KM INSERITI DALL'UTENTE
+
+  userAge = document.getElementById('age').value; // OTTENGO LA FASCIA D'ETA' INSERITA DALL'UTENTE
 
   console.log(`
   nome utente: ${userName}
@@ -24,17 +34,17 @@ function generate(){
   prezzo intero: ${priceFull}
   prezzo under 18: €${priceUnderAge}
   prezzo over 65: €${priceOverAge}
-  `);
+  `); // CONTROLLO LA CORRETTA RICEZIONE DEI DATI
 
   if (userAge === 'underAge'){
-    ticketPrice = tripKM * priceUnderAge;
+    ticketPrice = (tripKM * priceUnderAge).toFixed(2);
   } else if (userAge === 'overAge'){
-    ticketPrice = tripKM * priceOverAge;
+    ticketPrice = (tripKM * priceOverAge).toFixed(2);
   } else{
-    ticketPrice = tripKM * priceFull;
-  } 
+    ticketPrice = (tripKM * priceFull).toFixed(2);
+  } // ATTRAVERSO IL CONTROLLO DELLA FASCIA D'ETA' INSERITA CALCOLO IL PREZZO TOTALE
 
-  console.log(`prezzo biglietto: ${ticketPrice}`);
+  console.log(`prezzo biglietto: ${ticketPrice}`); // CONTROLLO CHE IL PREZZO VENGA CALCOLATO CORRETTAMENTE
 
   result = `
     il prezzo è ${ticketPrice}
@@ -53,7 +63,18 @@ function generate(){
 
 }
 
-btnCalc.addEventListener('click', generate);
+// IMPLEMENTO FUNZIONE CANCEL CHE RESETTA I DATI E ELIMINA L'EVENTUALE VISUALIZZAZIONE DI BIGLIETTI PRECEDENTEMENTE GENERATI
+function cancel(){
+  userName = document.getElementById('name').value = '';
+  tripKM = document.getElementById('km').value = '';
+  userAge = document.getElementById('age').value = '';
+
+  document.getElementById('result').classList.add('d-none');
+}
+
+btnCalc.addEventListener('click', generate); //RICHIAMO FUNZIONE GENRATE AL CLICK
+
+btnCanc.addEventListener('click', cancel); //RICHIAMO FUNZIONE CANCEL AL CLICK
 
 console.log(`
 nome utente: ${userName}
