@@ -25,6 +25,8 @@ function random(min, max){
 // IMPLEMENTO FUNZIONE GENERATE CHE MEMORIZZA LE INFO INSERITE DALL'UTENTE E CALCOLA IL PREZZO DEL BIGLIETTO
 function generate(){
 
+  document.querySelector('.ms-result').classList.remove('d-none');
+
   userName = document.getElementById('name').value; // OTTENGO IL NOME INSERITO DALL'UTENTE
 
   tripKM = document.getElementById('km').value; // OTTENGO I KM INSERITI DALL'UTENTE
@@ -50,23 +52,24 @@ function generate(){
 
   console.log(`prezzo biglietto: ${ticketPrice}`); // CONTROLLO CHE IL PREZZO VENGA CALCOLATO CORRETTAMENTE
 
-  CPcode = random(0, 99999); // assegno un valore random come codice CP 
+  CPcode = random(1, 99999); // assegno un valore random come codice CP 
 
   CPcode = String(CPcode).padStart(5, '0'); // aggiungo zeri prima del numero casuale per generare sempre un numero di 5 cifre
   
-  wagon = random(0, 15); // assegno un valore random per la carrozza
+  wagon = random(1, 15); // assegno un valore random per la carrozza
 
-  if ((userName != '') && (tripKM != 0) && (userAge != '')){
+  if ((userName != '') && (tripKM != '') && (userAge != '')){
 
     if (document.querySelector('.ms-ticket').classList.contains('d-none')){
       document.querySelector('.ms-ticket').classList.remove('d-none');
+      document.querySelector('.ms-error').classList.add('d-none');
     } // CONTROLLO CHE LA VISUALIZZAZIONE DEL RISULTATO NON SIA NASCOSTA
     
     document.querySelector('.ms-print-name').innerHTML = userName;
     document.querySelector('.ms-print-offer').innerHTML = userAge + ' Offer';
     document.querySelector('.ms-print-wagon').innerHTML = wagon;
     document.querySelector('.ms-print-cpcode').innerHTML = CPcode;
-    document.querySelector('.ms-print-price').innerHTML = ticketPrice;
+    document.querySelector('.ms-print-price').innerHTML = '&euro; ' + ticketPrice;
 
     userName = document.getElementById('name').value = '';
     tripKM = document.getElementById('km').value = '';
@@ -74,13 +77,15 @@ function generate(){
 
   } else{
     
-    if (document.querySelector('.ms-ticket').classList.contains('d-none')){
-      document.querySelector('.ms-ticket').classList.remove('d-none');
+    if (document.querySelector('.ms-error').classList.contains('d-none')){
+      document.querySelector('.ms-result').classList.remove('d-none');
+      document.querySelector('.ms-error').classList.remove('d-none');
+      document.querySelector('.ms-ticket').classList.add('d-none');
     } // CONTROLLO CHE LA VISUALIZZAZIONE DEL RISULTATO NON SIA NASCOSTA
 
     result = `Per favore inserisci tutti i dati richiesti prima di procedere`;
 
-    document.querySelector('.ms-ticket').innerHTML = result;
+    document.querySelector('.ms-error').innerHTML = result;
 
   }
 
@@ -92,18 +97,18 @@ function cancel(){
   tripKM = document.getElementById('km').value = '';
   userAge = document.getElementById('age').value = '';
 
-  document.querySelector('.ms-ticket').classList.add('d-none');
+  document.querySelector('.ms-result').classList.add('d-none');
 }
 
 btnCalc.addEventListener('click', generate); //RICHIAMO FUNZIONE GENRATE AL CLICK
 
 btnCanc.addEventListener('click', cancel); //RICHIAMO FUNZIONE CANCEL AL CLICK
 
-console.log(`
-nome utente: ${userName}
-lunghezza viaggio: ${tripKM}
-età passeggero: ${userAge}
-prezzo intero: ${priceFull}
-prezzo under 18: €${priceUnderAge}
-prezzo over 65: €${priceOverAge}
-`);
+// console.log(`
+// nome utente: ${userName}
+// lunghezza viaggio: ${tripKM}
+// età passeggero: ${userAge}
+// prezzo intero: ${priceFull}
+// prezzo under 18: €${priceUnderAge}
+// prezzo over 65: €${priceOverAge}
+// `);

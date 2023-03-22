@@ -77,28 +77,36 @@
         <button id="canc" class="mx-3 my-1">Annulla</button>
       </div>
 
-      <div class="ms-ticket bg-white rounded-5 p-4 my-3 text-dark d-none">
-        <h2 class="mb-3">Il tuo biglietto</h2>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Nome Passeggero</th>
-              <th scope="col">Offerta</th>
-              <th scope="col">Carrozza</th>
-              <th scope="col">Codice CP</th>
-              <th scope="col">Costo biglietto</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row" class="ms-print-name"></th>
-              <td class="ms-print-offer"></td>
-              <td class="ms-print-wagon"></td>
-              <td class="ms-print-cpcode"></td>
-              <td class="ms-print-price"></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="ms-result bg-white rounded-5 p-4 my-3 text-dark d-none">
+
+        <div class="ms-ticket d-none">
+
+          <h2 class="mb-3">Il tuo biglietto</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Nome Passeggero</th>
+                <th scope="col">Offerta</th>
+                <th scope="col">Carrozza</th>
+                <th scope="col">Codice CP</th>
+                <th scope="col">Costo biglietto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" class="ms-print-name"></th>
+                <td class="ms-print-offer"></td>
+                <td class="ms-print-wagon"></td>
+                <td class="ms-print-cpcode"></td>
+                <td class="ms-print-price"></td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+
+        <div class="ms-error d-none"></div>
+
       </div>
   
     </div>  
