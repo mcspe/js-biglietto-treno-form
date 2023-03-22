@@ -8,6 +8,9 @@ const priceUnderAge = priceFull * (1 - (20 / 100));
 const priceOverAge = priceFull * (1 - (40 / 100));
 let ticketPrice = 0;
 
+let wagon = 0;
+let CPcode = 0;
+
 let result = '';
 
 const btnCalc = document.getElementById('calc');
@@ -19,16 +22,11 @@ function random(min, max){
   return randomNumber;
 }
 
-// let randomN = random(0, 1000);
-
-// console.log('numero random ', randomN);
-
-
 // IMPLEMENTO FUNZIONE GENERATE CHE MEMORIZZA LE INFO INSERITE DALL'UTENTE E CALCOLA IL PREZZO DEL BIGLIETTO
 function generate(){
 
-  if (document.getElementById('result').classList.contains('d-none')){
-    document.getElementById('result').classList.remove('d-none');
+  if (document.querySelector('.ms-ticket').classList.contains('d-none')){
+    document.querySelector('.ms-ticket').classList.remove('d-none');
   } // CONTROLLO CHE LA VISUALIZZAZIONE DEL RISULTATO NON SIA NASCOSTA
 
   userName = document.getElementById('name').value; // OTTENGO IL NOME INSERITO DALL'UTENTE
@@ -56,18 +54,19 @@ function generate(){
 
   console.log(`prezzo biglietto: ${ticketPrice}`); // CONTROLLO CHE IL PREZZO VENGA CALCOLATO CORRETTAMENTE
 
+  CPcode = random(0, 99999); // assegno un valore random come codice CP 
+
+  CPcode = String(CPcode).padStart(5, '0'); // aggiungo zeri prima del numero casuale per generare sempre un numero di 5 cifre
+  
+  wagon = random(0, 15); // assegno un valore random per la carrozza
 
   if ((userName != '') && (tripKM != '') && (userAge != '')){
     
-    result = `
-      il prezzo è ${ticketPrice}
-      nome utente: ${userName}
-      lunghezza viaggio: ${tripKM}
-      età passeggero: ${userAge}
-      prezzo intero: ${priceFull}
-      prezzo under 18: €${priceUnderAge}
-      prezzo over 65: €${priceOverAge}
-    `;
+    document.querySelector('.ms-print-name').innerHTML = userName;
+    document.querySelector('.ms-print-offer').innerHTML = userAge + ' Offer';
+    document.querySelector('.ms-print-wagon').innerHTML = wagon;
+    document.querySelector('.ms-print-cpcode').innerHTML = CPcode;
+    document.querySelector('.ms-print-price').innerHTML = ticketPrice;
 
     userName = document.getElementById('name').value = '';
     tripKM = document.getElementById('km').value = '';
@@ -77,10 +76,9 @@ function generate(){
 
     result = `Per favore inserisci tutti i dati richiesti prima di procedere`;
 
-  }
+    document.querySelector('.ms-ticket').innerHTML = result;
 
-  
-  document.getElementById('result').innerHTML = result;
+  }
 
 }
 
@@ -90,7 +88,7 @@ function cancel(){
   tripKM = document.getElementById('km').value = '';
   userAge = document.getElementById('age').value = '';
 
-  document.getElementById('result').classList.add('d-none');
+  document.querySelector('.ms-ticket').classList.add('d-none');
 }
 
 btnCalc.addEventListener('click', generate); //RICHIAMO FUNZIONE GENRATE AL CLICK

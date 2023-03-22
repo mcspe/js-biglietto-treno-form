@@ -58,11 +58,11 @@
   
               <option value="">Seleziona la tua fascia di età</option>
   
-              <option value="underAge">Minorenne (< 17)</option>
+              <option value="Underage">Minorenne (< 17)</option>
   
-              <option value="adult">Adulto (18 - 64)</option>
+              <option value="Adult">Adulto (18 - 64)</option>
   
-              <option value="overAge">Pensionato (> 65)</option>
+              <option value="Overage">Pensionato (> 65)</option>
   
             </select>
   
@@ -77,7 +77,29 @@
         <button id="canc" class="mx-3 my-1">Annulla</button>
       </div>
 
-      <div id="result"></div>
+      <div class="ms-ticket bg-white rounded-5 p-4 my-3 text-dark d-none">
+        <h2 class="mb-3">Il tuo biglietto</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nome Passeggero</th>
+              <th scope="col">Offerta</th>
+              <th scope="col">Carrozza</th>
+              <th scope="col">Codice CP</th>
+              <th scope="col">Costo biglietto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="ms-print-name"></th>
+              <td class="ms-print-offer"></td>
+              <td class="ms-print-wagon"></td>
+              <td class="ms-print-cpcode"></td>
+              <td class="ms-print-price"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
   
     </div>
 
